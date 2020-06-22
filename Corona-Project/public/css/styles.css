@@ -1,0 +1,83 @@
+*{
+  margin: 0px;
+  padding: 0px;
+
+}
+body{
+  width:97%;
+  background-image: linear-gradient(to right,#bdc3c7,#2c3e50);
+font-weight: 50px;
+  font-family: 'Roboto', sans-serif;
+
+}
+footer{
+margin-top:40px;
+  text-align:center;
+}
+.commonlink{
+  color: white;
+}
+.nav-link{
+  font-size:20px;
+  margin-left: 30px;
+}
+h1{
+  text-align: left;
+  color:white;
+  font-family: 'Noto Serif', serif;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+}
+#cimg{
+  width:250px;
+  height:250px;
+  border: 2px solid white;
+  border-radius: 100%;
+  margin-left: 100px;
+  margin-top: 15px;
+
+}
+#cimg:hover {
+    position:relative;
+    top:20px;
+    left:0px;
+    width:300px;
+    height:300px;
+    display:block;
+    z-index:800;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.8);
+}
+#started{
+  border:1px solid gray;
+  border-radius: 20px;
+  height:270px;
+  margin-top: 20px;
+  background-color:#f4f6ff;
+  padding:5px;
+  color:brown;
+  /* margin-left: 5px; */
+}
+#symptoms{
+  border:1px solid gray;
+  border-radius: 20px;
+  height:270px;
+  margin-top: 20px;
+  background-color:#f4f6ff;
+}
+.bs,.zoom{
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  transition: transform .2s;
+}
+#precautions{
+  margin-top:30px;margin-left:500px;border:1px solid gray;width:600px;height:270px;padding:20px;text-align:center;background-color:#f4f6ff;border-radius:20px;
+color:#f37121;
+}
+
+.current{
+  background-image: url('https://w0.pngwave.com/png/351/865/globe-world-map-blue-earth-png-clip-art.png');
+  color:black;
+}
+
+.zoom:hover{
+
+  transform: scale(1.1);
+}
