@@ -1,10 +1,13 @@
-*{
-  margin: 0px;
-  padding: 0px;
-
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 }
 body{
-  width:97%;
+  width:100%;
   background-image: linear-gradient(to right,#bdc3c7,#2c3e50);
 font-weight: 50px;
   font-family: 'Roboto', sans-serif;
@@ -28,39 +31,44 @@ h1{
   text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
 #cimg{
-  width:250px;
-  height:250px;
+  width:380px;
+  height:350px;
   border: 2px solid white;
   border-radius: 100%;
-  margin-left: 100px;
+  margin-left: 80px;
+  position: relative;
   margin-top: 15px;
+  transition-property: transform;
+  transition: 1s;
+  transition-timing-function: linear;
+
 
 }
 #cimg:hover {
     position:relative;
-    top:20px;
-    left:0px;
-    width:300px;
-    height:300px;
-    display:block;
-    z-index:800;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.8);
+      transform: rotateY(180deg);
+
+
 }
 #started{
   border:1px solid gray;
   border-radius: 20px;
-  height:270px;
+  /* height:270px; */
   margin-top: 20px;
   background-color:#f4f6ff;
   padding:5px;
   color:brown;
+  line-height: 40px;
+
   /* margin-left: 5px; */
 }
 #symptoms{
   border:1px solid gray;
   border-radius: 20px;
-  height:270px;
+  /* height:270px; */
   margin-top: 20px;
+  line-height: 40px;
+  padding:5px;
   background-color:#f4f6ff;
 }
 .bs,.zoom{
@@ -68,16 +76,54 @@ h1{
   transition: transform .2s;
 }
 #precautions{
-  margin-top:30px;margin-left:500px;border:1px solid gray;width:600px;height:270px;padding:20px;text-align:center;background-color:#f4f6ff;border-radius:20px;
+  margin-top:30px;margin-left:500px;border:1px solid gray;width:600px;
+  /* height:270px; */
+  padding:20px;text-align:center;background-color:#f4f6ff;border-radius:20px;
 color:#f37121;
+margin-right: 20px;
+line-height: 30px;
+}
+.world{
+  margin-top:50px;background-image:url('https://wallpapercave.com/wp/wp2593864.jpg');color:white;
 }
 
 .current{
   background-image: url('https://w0.pngwave.com/png/351/865/globe-world-map-blue-earth-png-clip-art.png');
   color:black;
+
 }
 
 .zoom:hover{
 
-  transform: scale(1.1);
+  transform: scale(1.08);
+}
+
+@media (min-width:0px) and (max-width:600px){
+  #precautions{
+    margin-left:0px;
+
+  }
+  /* #started h3{
+    font-size: 20px;
+  }
+  #started p{
+    font-size: 14px;
+  } */
+  .world{
+    margin:10px 10px;
+  }
+  #precautions,#symptoms{
+    margin: 10px 10px;
+    padding: 10px;
+    /* width:510px; */
+    /* height: 280px; */
+  }
+
+
+}
+@media (min-width:0) and (max-width:300){
+
+  #cimg{
+    margin-left: 0px;
+  }
 }
