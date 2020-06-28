@@ -71,7 +71,7 @@ json:true},function(err,response){
 // });
 
 
-app.post("/",function(req,res){
+app.post("/individual",function(req,res){
  s=req.body.search;
   api.countries({country:s}).then((element)=>{
   flagUrl=element.countryInfo.flag;
