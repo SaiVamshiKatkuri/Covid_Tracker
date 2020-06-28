@@ -75,8 +75,8 @@ app.post("/",function(req,res){
  s=req.body.search;
   api.countries({country:s}).then((element)=>{
   flagUrl=element.countryInfo.flag;
-        });
-       console.log(flagUrl);
+   console.log(flagUrl);
+   console.log(1);
     today = new Date().toISOString().substring(0, 10);
     t = new Date();
     yesterday = new Date(t.setDate(t.getDate() - 45));
@@ -86,18 +86,23 @@ app.post("/",function(req,res){
     method:'GET',
     json:true},function(err,response){
    Tot=response.body;
+   console.log(2);
                Tot.forEach(function(item){
                 D.push(item.Date);
 
              Confirm.push(item.Confirmed);
              De.push(item.Deaths);
              Ac.push(item.Active);
+             console.log(3);
+             
                 });
-
+res.render('index',{Confirmed:Confirm,Dates:D.length,Deaths:De,Active:Ac});
 });
-     // L=D.length;
-  res.render('index',{Confirmed:Confirm,Dates:D.length,Deaths:De,Active:Ac});
+  
+  
 });
+        });
+      
 
 
 
