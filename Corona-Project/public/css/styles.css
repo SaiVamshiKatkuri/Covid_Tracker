@@ -127,3 +127,59 @@ line-height: 30px;
     margin-left: 0px;
   }
 }
+/* For Countries Page */
+#flag{
+  box-shadow:3px 3px 5px 6px rgba(0,0,0,0.4);
+  border:1px solid white;
+  border-radius:10px;
+  width:15vw;
+}
+.flag_col{
+  text-align:center;
+  margin-top:80px;
+  position: relative;
+  animation-name: flag;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  /* animation-delay: 1s; */
+}
+@keyframes flag {
+  0%{top:-400px}
+  100%{top:0px}
+}
+.head_div h3{
+  font-weight: 30px;
+  font-size: 35px;
+  color: white;
+  font-family: 'Noto Serif', serif;
+  text-decoration: underline black;
+  text-decoration-thickness:30px;
+}
+.data_div{
+  text-align: left;
+}
+.data_div h4{
+  font-weight: 30px;
+  font-size: 25px;
+  color:white;
+  text-decoration:underline dotted black;
+  font-family: 'Roboto', sans-serif;
+}
+.graph{
+  height:500px;
+  position: relative;
+  animation-name: line_graph;
+  animation-fill-mode: forwards;
+  animation-duration: 4s;
+}
+.main_data{
+  margin-top:30px;
+  text-align:center;
+}
+@keyframes line_graph {
+  0%{left:-1000px}
+  100%{left:0px}
+}
+footer{
+  margin-top: 200px;
+}

@@ -1,29 +1,34 @@
 <%- include("header") -%>
 <div style="margin-left:20px;">
-<h1>Covid-19</h1>
-<div class="row">
-<div class="col-lg-4 col-md-12 col-sm-12  col-xs-12 bs zoom" id="started" style="margin-top:20px;float:left;position:relative;padding-left:20px;" role="alert">
-<h3 style="text-decoration:underline;text-decoration-thickness:10%;">How it actually started?</h3>
-<p>Several of the early cases had visited Huanan Seafood Wholesale Market and so the virus is thought to have a zoonotic origin.The virus that caused the outbreak is known as SARS‑CoV‑2, a newly discovered virus closely related to bat coronaviruses,pangolin coronaviruses,and SARS-CoV.The scientific consensus is that COVID-19 has a natural origin.The probable bat-to-human infection may have been among people processing bat carcasses and guano in the production of traditional Chinese medicines.</p>
-</div>
-<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-<img id="cimg" src="https://cdn.mos.cms.futurecdn.net/JtVH5Khvihib7dBDFY9ZDR.jpg" alt="network error" >
-  </div>
+  <h1>Covid-19</h1>
+  <div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12  col-xs-12 bs zoom" id="started"
+      style="margin-top:20px;float:left;position:relative;padding-left:20px;" role="alert">
+      <h3 style="text-decoration:underline;text-decoration-thickness:10%;">How it actually started?</h3>
+      <p>Several of the early cases had visited Huanan Seafood Wholesale Market and so the virus is thought to have a
+        zoonotic origin.The virus that caused the outbreak is known as SARS‑CoV‑2, a newly discovered virus closely
+        related to bat coronaviruses,pangolin coronaviruses,and SARS-CoV.The scientific consensus is that COVID-19 has a
+        natural origin.The probable bat-to-human infection may have been among people processing bat carcasses and guano
+        in the production of traditional Chinese medicines.</p>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+      <img id="cimg" src="https://cdn.mos.cms.futurecdn.net/JtVH5Khvihib7dBDFY9ZDR.jpg" alt="network error">
+    </div>
 
-<div class="col-lg-4  col-md-12 col-sm-12 col-xs-12 bs zoom" id="symptoms" style="color:#303960;" role="alert">
-  <h3 style="text-decoration:underline;text-decoration-thickness:10%;">Symptoms to be noted:</h3>
-  <ul style="margin-left:15px;">
-<li>Fever or Chills</li>
-<li>Cough</li>
-<li>Fatigue</li>
-<li>Headache</li>
-<li>Sore throat</li>
-<li>Congestion or runny nose</li>
-<li>Diarrhea</li>
-<li>Muscle or body aches</li>
-    </ul>
-</div>
-</div>
+    <div class="col-lg-4  col-md-12 col-sm-12 col-xs-12 bs zoom" id="symptoms" style="color:#303960;" role="alert">
+      <h3 style="text-decoration:underline;text-decoration-thickness:10%;">Symptoms to be noted:</h3>
+      <ul style="margin-left:15px;">
+        <li>Fever or Chills</li>
+        <li>Cough</li>
+        <li>Fatigue</li>
+        <li>Headache</li>
+        <li>Sore throat</li>
+        <li>Congestion or runny nose</li>
+        <li>Diarrhea</li>
+        <li>Muscle or body aches</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="bs zoom col-lg-6 col-md-12 col-sm-12 col-xs-12" id="precautions">
@@ -31,34 +36,34 @@
   <h2 style="text-align:left;text-decoration:underline;text-decoration-thickness:10%;">Precautions</h2>
   <ol style="text-align:left;margin-left:10px;">
     <li>Stay Home and Maintain Social Distance</li>
-<li>Wash Hands Often</li>
-<li>Cover your cough</li>
-<li>Wear a Mask when out</li>
-<li>Sick?Call a helpline</li>
-</ol>
+    <li>Wash Hands Often</li>
+    <li>Cover your cough</li>
+    <li>Wear a Mask when out</li>
+    <li>Sick?Call a helpline</li>
+  </ol>
 </div>
 
 <div class='jumbotron row col-lg-12 col-md-12 col-sm-12 col-xs-12 world'>
-  <div class="col-lg-4"  >
+  <div class="col-lg-4">
     <h1>Total Confirmed</h1>
     <h4><%= TConfirmed %> </h4>
     <h1>New Confirmed</h1>
     <h4><%=Newconfirmed%></h4>
-    </div>
-    <div class="col-lg-4" >
-      <h1>Total Deaths </h1>
-      <h4><%= TDeaths %></h4>
-      <h1>New Deaths</h1>
-      <h4><%=Newdeaths%></h4>
-      </div>
-      <div class="col-lg-4">
-        <h1>Total Recovered</h1>
-        <h4><%= TRecovered %></h4>
-        <h1>New Recovered</h1>
-        <h4><%= Newrecovered%></h4>
-        </div>
   </div>
-  <!-- <div class='row' style="text-align:center;margin:0px;height:220px;margin-left:40px;">
+  <div class="col-lg-4">
+    <h1>Total Deaths </h1>
+    <h4><%= TDeaths %></h4>
+    <h1>New Deaths</h1>
+    <h4><%=Newdeaths%></h4>
+  </div>
+  <div class="col-lg-4">
+    <h1>Total Recovered</h1>
+    <h4><%= TRecovered %></h4>
+    <h1>New Recovered</h1>
+    <h4><%= Newrecovered%></h4>
+  </div>
+</div>
+<!-- <div class='row' style="text-align:center;margin:0px;height:220px;margin-left:40px;">
 
 <div class="current col-lg-4 col-md-4 col-sm-12 col-xs-12"  style="border:4px solid white;border-radius:20%;margin-bottom:30px;font-weight:30px;">
   <h3>New <br>Confirmed</h3>
