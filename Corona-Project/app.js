@@ -1,11 +1,14 @@
-// jshint esversion:6
+
+const mongoose = require('mongoose');
+const request = require('request');
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require('request');
-const requests = require('requests');
-const https = require("https");
-const mongoose = require('mongoose');
-const ejs = require('ejs');
+const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const ejs = require("ejs");
+const https = require('https');
+const path = require('path');
+const helmet = require('helmet');
 const api = require('novelcovid');
 
 // you can choose which URL to use, this will not change the behaviour of the API
@@ -48,6 +51,20 @@ mongoose.connect("mongodb://localhost:27017/coronausersDB", {
 });
 
 app.get("/", function (req, res) {
+	api.countries({sort:'cases'}).then((c)=>{
+    console.log(c);
+    var countr={}
+    
+      c.forEach((i)=>{
+        
+        countr[i.countryInfo.iso2]=i.active;
+      });
+  
+//     console.log(countr);
+//     res.render("map",{c:[countr]});
+//   }) ;
+// });
+
   const url = "https://api.covid19api.com/summary";
   request({
     url: "https://api.covid19api.com/summary",
@@ -63,16 +80,20 @@ app.get("/", function (req, res) {
     yesterday = new Date(t.setDate(t.getDate() - 14));
     var nrecovered = Total.Global.NewRecovered;
     var ndeaths = Total.Global.NewDeaths;
+    console.log(countr);
     res.render("main", {
       TConfirmed: confirmed,
       TRecovered: recovered,
       TDeaths: deaths,
+      c:[countr],
       Newconfirmed: nconfirmed,
       Newrecovered: nrecovered,
       Newdeaths: ndeaths
     });
   });
 });
+});
+
 // https.get(url,function(response){
 //
 //   [response].on("data",function(data){

@@ -3,7 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-
+<!--   <script src="map.ejs"></script> -->
+<%- include('map') -%>
+<script src="worldmap.js"></script>
+  
+  
+  
+     
+ 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
   <link
@@ -43,3 +50,23 @@
       </form>
     </div>
   </nav>
+
+
+<h1>HTML5/Javascript World Map</h1>
+    <div id="map"></div>
+    <style type="text/css">
+.legend{color: black; width: 100%; font-family: arial; font-size: 14px;}    
+.legend_color {display: table; width: 100%; background: white; list-style: none; margin: 0px; padding: 0px; }
+.legend_color li{width: 20%;  height: 20px; display: table-cell;}
+.legend_label {display: table; width: 100%;  padding: 0px; padding-left: 10%; padding-right: 10%; list-style: none; margin: 0px; box-sizing: border-box;}
+.legend_label li{width: 25%;  height: 20px; display: table-cell; text-align: center;}
+</style>
+<div class="legend">
+  <ul class="legend_label">
+    <li>19,704</li><li>19,704</li><li>19,704</li><li>19,704</li>
+  </ul>
+  <ul class="legend_color">
+    <li style="background-color: #ff6666"></li><li style="background-color: #ff3333"></li><li style="background-color: #ff0000"></li><li style="background-color: #cc0000"></li><li style="background-color: #990000"></li>
+  </ul>
+</div>
+    
