@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({
 }));
 api.settings({
   baseUrl: 'https://disease.sh' | 'https://api.caw.sh' | 'https://corona.lmao.ninja'
-})
+});
 mongoose.connect("mongodb://localhost:27017/coronausersDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -92,6 +92,7 @@ app.get("/", function (req, res) {
       Newdeaths: ndeaths
     });
   });
+});
 });
 
 
@@ -195,4 +196,5 @@ app.post("/individual", function (req, res) {
 app.listen(3000, function () {
   console.log("its working");
 
-})
+});
+
