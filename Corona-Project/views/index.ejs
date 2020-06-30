@@ -57,21 +57,35 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-2">
-    </div>
-    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 graph">
+
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 graph">
       <canvas id="myChart"></canvas>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 graph">
+      <canvas id="myChart2"></canvas>
     </div>
-  </div>
 
+  </div>
   <div class="row">
     <div class="col-lg-3">
 
     </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 graph">
+      <canvas id="myChart3"></canvas>
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-lg-3 col-xs-12">
+
+    </div>
 <% if(provinces!=null){ %>
-    <div class="col-lg-6  table">
+    <div class="col-lg-6 col-xs-12 table">
       <table>
         <tr>
           <th>State</th>
@@ -94,7 +108,7 @@
     <% } %>
 
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-xs-12">
 
     </div>
   </div>
@@ -102,13 +116,14 @@
 
 </body>
 <script type="text/javascript">
-  var test = "<%=provinces%>";
-  console.log(test);
+  // var test = "<%=provinces%>";
+  // console.log(test);
   var count = 0;
-  if (++count === 1) {
+
     var ctx = document.getElementById('myChart').getContext('2d');
 
     Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.elements.point.pointStyle='line';
     Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
     var Length = [];
     var S =<%=Dates%>;
@@ -123,28 +138,63 @@
         datasets: [{
           label: 'Confirmed',
           data: [<%= Confirmed %>],
-          borderWidth: 1,
-          borderColor: 'rgba(100,240,200,1)',
+          borderColor: 'rgba(55, 66, 250,1)',
           hoverBorderWidth: 3,
-          hoverBorderColor: 'rgba(100,240,200,1)'
+          // hoverBorderColor: 'rgba(100,240,200,1)',
+          backgroundColor:'rgba(55, 66, 250,0.4)'
+        }]
+      },
+      options: {
+        tooltips: {
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          mode: 'point'
+
         },
+        title: {
+          display: true,
+          text: 'Case study for Corona for past 45days',
+          fontSize: 30,
+          fontColor: 'rgba(0,0,0,1)'
+        },
+        scales: {
+          xAxes: [{
+              gridLines: {
+                 display:false
+              }
+           }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+          }]
+        }
+      }
+
+    });
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+    var Length = [];
+    var S =<%=Dates%>;
+    for (i = 1; i <= S; i++) {
+      Length.push(i);
+    }
+    var myChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Length,
+        fontSize: 14,
+        datasets: [
         {
           label: 'Active',
           data: [<%= Active %>],
-          borderWidth: 1,
+          borderWidth: 3,
           borderColor: 'rgba(255,255,255,1)',
           hoverBorderWidth: 3,
-          hoverBorderColor: 'rgba(255,255,255,1)'
-        },
-        {
-          label: 'Deaths',
-          data: [<%= Deaths %>],
-          borderWidth: 0.5,
-          borderColor: 'rgba(255,0,0,1)',
-          backgroundColor: 'rgba(255,0,0,0.6)',
-          backgroundColor: 'rgba(255,0,0,0.5)',
-          hoverBorderWidth: 3,
-          hoverBorderColor: 'rgba(255,0,0,1)'
+          hoverBorderColor: 'rgba(255,255,255,1)',
+          backgroundColor:"rgba(255,255,255,0.4)"
         }]
       },
       options: {
@@ -158,6 +208,11 @@
           fontColor: 'rgba(0,0,0,1)'
         },
         scales: {
+          xAxes: [{
+              gridLines: {
+                 display:false
+              }
+           }],
           yAxes: [{
             ticks: {
               beginAtZero: true
@@ -167,7 +222,59 @@
       }
 
     });
-  }
+
+
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+        var Length = [];
+        var S =<%=Dates%>;
+        for (i = 1; i <= S; i++) {
+          Length.push(i);
+        }
+        var myChart3 = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: Length,
+            fontSize: 14,
+            datasets: [
+            {
+              label: 'Deaths',
+              data: [<%= Deaths %>],
+              borderWidth: 3,
+              borderColor: 'rgba(255,0,0,1)',
+
+              backgroundColor: 'rgba(255,0,0,0.4)',
+              hoverBorderWidth: 3,
+              hoverBorderColor: 'rgba(255,0,0,1)'
+            }]
+          },
+          options: {
+            tooltips: {
+              backgroundColor: 'rgba(0,0,0,0.3)'
+            },
+            title: {
+              display: true,
+              text: 'Case study for Corona for past 45days',
+              fontSize: 30,
+              fontColor: 'rgba(0,0,0,1)'
+            },
+            scales: {
+              xAxes: [{
+                  gridLines: {
+                     display:false
+                  }
+               }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+
+        });
+
 </script>
 <%- include("footer") -%>
 
