@@ -36,6 +36,11 @@ var active_million;
 var test_million;
 var country;
 var Total;
+var global_count;
+var global_confirmed=[];
+var global_recovered=[];
+var global_deaths=[];
+var global_active=[];
 
 
 app.use(express.static("public"));
@@ -60,18 +65,36 @@ app.get("/", function (req, res) {
 
         countr[i.countryInfo.iso2]=i.active;
       });
-
-//     console.log(countr);
-//     res.render("map",{c:[countr]});
-//   }) ;
-// });
-
   const url = "https://api.covid19api.com/summary";
   request({
     url: "https://api.covid19api.com/summary",
     method: 'GET',
     json: true
   }, function (err, response) {
+
+
+    request({
+    url:"https://covidapi.info/api/v1/global/count",
+    method:'GET',
+    json:true},
+    function(err,resp1){
+    global_count={};
+    global_confirmed=[];
+    global_recovered=[];
+    global_deaths=[];
+    global_active=[];
+    global_count=resp1.body.result;
+    var count=0;
+    for(var item in global_count){
+      global_deaths.push(global_count[item].deaths);
+        global_confirmed.push(global_count[item].confirmed);
+        global_recovered.push(global_count[item].recovered);
+        global_active.push((global_count[item].confirmed-global_count[item].deaths-global_count[item].recovered));
+        // console.log(global_count[key].deaths);
+      count++;
+    }
+
+
     Total = response.body;
     var confirmed = Total.Global.TotalConfirmed;
     var recovered = Total.Global.TotalRecovered;
@@ -89,8 +112,14 @@ app.get("/", function (req, res) {
       c:[countr],
       Newconfirmed: nconfirmed,
       Newrecovered: nrecovered,
-      Newdeaths: ndeaths
+      Newdeaths: ndeaths,
+      g_deaths:global_deaths,
+      g_confirmed:global_confirmed,
+      g_recovered:global_recovered,
+      g_active:global_active,
+      Dates:count
     });
+  });
   });
 });
 });
@@ -197,4 +226,3 @@ app.listen(3000, function () {
   console.log("its working");
 
 });
-

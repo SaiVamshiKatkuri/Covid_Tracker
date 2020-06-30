@@ -1,7 +1,28 @@
 <%- include("header") -%>
+
 <div style="margin-left:20px;">
   <h1>Covid-19</h1>
 
+
+
+
+<div class="row">
+  <div class="col-lg-6">
+  <canvas id="myChart1"></canvas>
+  </div>
+  <div class="col-lg-6">
+  <canvas id="myChart2"></canvas>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <canvas id="myChart3"></canvas>
+  </div>
+  <div class="col-lg-6">
+    <canvas id="myChart4"></canvas>
+  </div>
+</div>
   <div class="row">
     <div class="col-lg-4 col-md-12 col-sm-12  col-xs-12 bs zoom" id="started"
       style="margin-top:20px;float:left;position:relative;padding-left:20px;" role="alert">
@@ -64,5 +85,222 @@
     <h4><%= Newrecovered%></h4>
   </div>
 </div>
+
+
+<script type="text/javascript">
+
+  var count = 0;
+
+    var ctx = document.getElementById('myChart1').getContext('2d');
+
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.elements.point.pointStyle='line';
+    Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+    var Length = [];
+    var S =<%=Dates%>;
+    for (i = 1; i <= S; i++) {
+      Length.push(i);
+    }
+    var myChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Length,
+        fontSize: 14,
+        datasets: [{
+          label: 'Confirmed',
+          data: [<%= g_confirmed %>],
+          borderColor: 'rgba(55, 66, 250,1)',
+          hoverBorderWidth: 3,
+          // hoverBorderColor: 'rgba(100,240,200,1)',
+          backgroundColor:'rgba(55, 66, 250,0.4)'
+        }]
+      },
+      options: {
+        tooltips: {
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          mode: 'point'
+
+        },
+        title: {
+          display: true,
+          text: 'Case study for Corona for past 45days',
+          fontSize: 30,
+          fontColor: 'rgba(0,0,0,1)'
+        },
+        scales: {
+          xAxes: [{
+              gridLines: {
+                 display:false
+              }
+           }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+          }]
+        }
+      }
+
+    });
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+    var Length = [];
+    var S =<%=Dates%>;
+    for (i = 1; i <= S; i++) {
+      Length.push(i);
+    }
+    var myChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Length,
+        fontSize: 14,
+        datasets: [
+        {
+          label: 'Active',
+          data: [<%= g_active %>],
+          borderWidth: 3,
+          borderColor: 'rgba(255,255,255,1)',
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'rgba(255,255,255,1)',
+          backgroundColor:"rgba(255,255,255,0.4)"
+        }]
+      },
+      options: {
+        tooltips: {
+          backgroundColor: 'rgba(0,0,0,0.3)'
+        },
+        title: {
+          display: true,
+          text: 'Case study for Corona for past 45days',
+          fontSize: 30,
+          fontColor: 'rgba(0,0,0,1)'
+        },
+        scales: {
+          xAxes: [{
+              gridLines: {
+                 display:false
+              }
+           }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+
+    });
+
+
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+        var Length = [];
+        var S =<%=Dates%>;
+        for (i = 1; i <= S; i++) {
+          Length.push(i);
+        }
+        var myChart3 = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: Length,
+            fontSize: 14,
+            datasets: [
+            {
+              label: 'Deaths',
+              data: [<%= g_deaths %>],
+              borderWidth: 3,
+              borderColor: 'rgba(255,0,0,1)',
+
+              backgroundColor: 'rgba(255,0,0,0.4)',
+              hoverBorderWidth: 3,
+              hoverBorderColor: 'rgba(255,0,0,1)'
+            }]
+          },
+          options: {
+            tooltips: {
+              backgroundColor: 'rgba(0,0,0,0.3)'
+            },
+            title: {
+              display: true,
+              text: 'Case study for Corona for past 45days',
+              fontSize: 30,
+              fontColor: 'rgba(0,0,0,1)'
+            },
+            scales: {
+              xAxes: [{
+                  gridLines: {
+                     display:false
+                  }
+               }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+
+        });
+
+
+        var ctx = document.getElementById('myChart4').getContext('2d');
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
+        var Length = [];
+        var S =<%=Dates%>;
+        for (i = 1; i <= S; i++) {
+          Length.push(i);
+        }
+        var myChart4 = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: Length,
+            fontSize: 14,
+            datasets: [
+            {
+              label: 'Recovered',
+              data: [<%= g_recovered %>],
+              borderWidth: 3,
+              borderColor: 'rgba(255,0,0,1)',
+
+              backgroundColor: 'rgba(255,0,0,0.4)',
+              hoverBorderWidth: 3,
+              hoverBorderColor: 'rgba(255,0,0,1)'
+            }]
+          },
+          options: {
+            tooltips: {
+              backgroundColor: 'rgba(0,0,0,0.3)'
+            },
+            title: {
+              display: true,
+              text: 'Case study for Corona for past 45days',
+              fontSize: 30,
+              fontColor: 'rgba(0,0,0,1)'
+            },
+            scales: {
+              xAxes: [{
+                  gridLines: {
+                     display:false
+                  }
+               }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+
+        });
+
+</script>
+
+
+
 
 <%- include("footer") -%>
