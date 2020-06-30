@@ -24,55 +24,92 @@
   <div class="row">
 
     <div class="col-lg-4">
-      </div>
-      <div  class="col-lg-4 flag_col">
-          <img src="<%= img %> " id="flag" alt="network error">
-      </div>
-<div class="col-lg-4">
-</div>
+    </div>
+    <div class="col-lg-4 flag_col">
+      <img src="<%= img %> " id="flag" alt="network error">
+    </div>
+    <div class="col-lg-4">
+    </div>
 
   </div>
-            <div class="head_div" style="text-align:center;margin-top:30px;">
-               <h3>Continent: <%= c_continent %></h3><br>
-             <h3>Country: <%=country %></h3><br>
-               </div>
-        <div class="row main_data">
-
-            <div class="col-lg-3 col-lg-3 col-sm-12 col-xs-12"></div>
-
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 data_div">
-
-                <h4>Country Population:<%=c_population %></h4><br>
-                <h4>Total tests: <%=total_tests %> </h4><br>
-                <h4>Active per million:<%= a_million %></h4><br>
-                <h4>Total recovered:<%= total_recovered %></h4><br>
-              </div>
-
-              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 data_div">
-
-                   <h4>Today cases:<%= today_cases %></h4><br>
-                   <h4>Today recovered:<%= today_recovered %></h4><br>
-                   <h4>Today deaths:<%=today_deaths %></h4><br>
-                   <h4>Total deaths:<%=total_deaths %></h4><br>
-               </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-2">
-              </div>
-  <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 graph">
-    <canvas id="myChart"></canvas>
+  <div class="head_div" style="text-align:center;margin-top:30px;">
+    <h3>Continent: <%= c_continent %></h3><br>
+    <h3>Country: <%=country %></h3><br>
   </div>
-  <div class="col-lg-2">
+  <div class="row main_data">
+
+    <div class="col-lg-3 col-lg-3 col-sm-12 col-xs-12"></div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 data_div">
+
+      <h4>Country Population:<%=c_population %></h4><br>
+      <h4>Total tests: <%=total_tests %> </h4><br>
+      <h4>Active per million:<%= a_million %></h4><br>
+      <h4>Total recovered:<%= total_recovered %></h4><br>
     </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 data_div">
+
+      <h4>Today cases:<%= today_cases %></h4><br>
+      <h4>Today recovered:<%= today_recovered %></h4><br>
+      <h4>Today deaths:<%=today_deaths %></h4><br>
+      <h4>Total deaths:<%=total_deaths %></h4><br>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 graph">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+<% if(provinces!=null){ %>
+    <div class="col-lg-6  table">
+      <table>
+        <tr>
+          <th>State</th>
+          <th>Deaths</th>
+          <th>Confirmed</th>
+          <th>Recovered</th>
+          <th>Active</th>
+        </tr>
+        <% provinces.forEach(function(item){ %>
+        <tr>
+          <td><%=item.Province_State %></td>
+          <td><%= item.Deaths %></td>
+          <td><%= item.Confirmed %></td>
+          <td><%= item.Recovered %></td>
+          <td><%= item.Active %></td>
+        </tr>
+        <%  }) %>
+      </table>
+    </div>
+    <% } %>
+
+
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+
+
 </body>
 <script type="text/javascript">
+  var test = "<%=provinces%>";
+  console.log(test);
   var count = 0;
   if (++count === 1) {
     var ctx = document.getElementById('myChart').getContext('2d');
 
     Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor='rgba(0,0,0,0.7)';
+    Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,0.7)';
     var Length = [];
     var S =<%=Dates%>;
     for (i = 1; i <= S; i++) {
@@ -83,21 +120,21 @@
       data: {
         labels: Length,
         fontSize: 14,
-        datasets: [  {
-            label: 'Confirmed',
-            data: [<%= Confirmed %>],
-            borderWidth: 1,
-            borderColor: 'rgba(100,240,200,1)',
-            hoverBorderWidth:3,
-            hoverBorderColor:'rgba(100,240,200,1)'
-          },
-          {
+        datasets: [{
+          label: 'Confirmed',
+          data: [<%= Confirmed %>],
+          borderWidth: 1,
+          borderColor: 'rgba(100,240,200,1)',
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'rgba(100,240,200,1)'
+        },
+        {
           label: 'Active',
           data: [<%= Active %>],
           borderWidth: 1,
           borderColor: 'rgba(255,255,255,1)',
-          hoverBorderWidth:3,
-          hoverBorderColor:'rgba(255,255,255,1)'
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'rgba(255,255,255,1)'
         },
         {
           label: 'Deaths',
@@ -106,13 +143,13 @@
           borderColor: 'rgba(255,0,0,1)',
           backgroundColor: 'rgba(255,0,0,0.6)',
           backgroundColor: 'rgba(255,0,0,0.5)',
-          hoverBorderWidth:3,
-          hoverBorderColor:'rgba(255,0,0,1)'
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'rgba(255,0,0,1)'
         }]
       },
       options: {
-        tooltips:{
-        backgroundColor:'rgba(0,0,0,0.3)'
+        tooltips: {
+          backgroundColor: 'rgba(0,0,0,0.3)'
         },
         title: {
           display: true,

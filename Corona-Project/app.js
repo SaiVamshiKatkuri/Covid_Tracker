@@ -12,8 +12,15 @@ const helmet = require('helmet');
 const api = require('novelcovid');
 
 // you can choose which URL to use, this will not change the behaviour of the API
-
+var province = {};
+var state_province = [];
 //Variable Declaration//
+var Tot = [];
+var Confirm = [];
+var D = [];
+var De = [];
+var Ac = [];
+var today = "";
 const app = express();
 var flagUrl = "";
 var s = "";
@@ -29,13 +36,7 @@ var active_million;
 var test_million;
 var country;
 var Total;
-// var Tot=[];
-// var Confirm=[];
-// var D=[];
-// var De=[];
-// var Ac=[];
-// var L="";
-// var today="";
+
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -54,12 +55,12 @@ app.get("/", function (req, res) {
 	api.countries({sort:'cases'}).then((c)=>{
     console.log(c);
     var countr={}
-    
+
       c.forEach((i)=>{
-        
+
         countr[i.countryInfo.iso2]=i.active;
       });
-  
+
 //     console.log(countr);
 //     res.render("map",{c:[countr]});
 //   }) ;
@@ -92,17 +93,6 @@ app.get("/", function (req, res) {
     });
   });
 });
-});
-
-// https.get(url,function(response){
-//
-//   [response].on("data",function(data){
-// // console.log(data);
-// // var Total=[];
-//   var  Total=JSON.parse(data);
-//    console.log(Total.Global);
-// });
-// });
 
 
 app.post("/individual", function (req, res) {
@@ -110,37 +100,39 @@ app.post("/individual", function (req, res) {
   api.countries({
     country: s
   }).then((element) => {
-    console.log(element);
+
     flagUrl = element.countryInfo.flag;
-    total_recovered=element.recovered;
-    country=element.country;
-    today_cases= element.todayCases;
-    today_deaths=element.todayDeaths ;
-    today_recovered=element.todayRecovered;
-    continent= element.continent;
-    country_population=element.population ;
-    total_tests=element.tests ;
-    active_million=element.activePerOneMillion ;
-    test_million=element.testsPerOneMillion ;
-    total_deaths=element.deaths ;
+    total_recovered = element.recovered;
+    country = element.country;
+    today_cases = element.todayCases;
+    today_deaths = element.todayDeaths;
+    today_recovered = element.todayRecovered;
+    continent = element.continent;
+    country_population = element.population;
+    total_tests = element.tests;
+    active_million = element.activePerOneMillion;
+    test_million = element.testsPerOneMillion;
+    total_deaths = element.deaths;
     console.log(1);
     today = new Date().toISOString().substring(0, 10);
     t = new Date();
     yesterday = new Date(t.setDate(t.getDate() - 45));
-     y=yesterday.toISOString().substring(0,10);
-     console.log(y);
+    y = yesterday.toISOString().substring(0, 10);
+
+
 
     request({
-      url: "https://api.covid19api.com/country/" + s + "?from="+ y +"T00:00:00Z&to=" + today + "T00:00:00Z",
+      url: "https://api.covid19api.com/country/" + s + "?from=" + y + "T00:00:00Z&to=" + today + "T00:00:00Z",
       method: 'GET',
       json: true
     }, function (err, response) {
-      var Tot = [];
-      var Confirm = [];
-      var D = [];
-      var De = [];
-      var Ac = [];
-      var today = "";
+      console.log("20");
+      Tot = [];
+      Confirm = [];
+      D = [];
+      De = [];
+      Ac = [];
+
 
       Tot = response.body;
       console.log(2);
@@ -153,30 +145,49 @@ app.post("/individual", function (req, res) {
         console.log(3);
 
       });
-      res.render('index', {
-        Confirmed: Confirm,
-        Dates: D.length,
-        Deaths: De,
-        Active: Ac,
-        img: flagUrl,
-        c_continent:continent,
-        country:country,
-        c_population:country_population,
-        total_tests:total_tests,
-        a_million:active_million,
-        total_recovered:total_recovered,
-        today_cases:today_cases,
-        today_recovered:today_recovered,
-        today_deaths:today_deaths,
-        total_deaths:total_deaths
-      });
 
+
+      request({
+        url: "https://api-corona.azurewebsites.net/country/" + s,
+        method: 'GET',
+        json: true
+      }, function (err, resp) {
+        console.log("30");
+        province = resp.body;
+        state_province = province.State;
+        // console.log(state_province);
+
+  console.log(state_province);
+
+
+
+
+        res.render('index', {
+          Confirmed: Confirm,
+          Dates: D.length,
+          Deaths: De,
+          Active: Ac,
+          img: flagUrl,
+          c_continent: continent,
+          country: country,
+          c_population: country_population,
+          total_tests: total_tests,
+          a_million: active_million,
+          total_recovered: total_recovered,
+          today_cases: today_cases,
+          today_recovered: today_recovered,
+          today_deaths: today_deaths,
+          total_deaths: total_deaths,
+          provinces: state_province,
+          country: s
+});
+      });
     });
 
-
   });
-
 });
+
+
 
 
 
