@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-<!--   <script src="map.ejs"></script> -->
-<%- include('map') -%>
-<script src="worldmap.js"></script>
+  <!--   <script src="map.ejs"></script> -->
+  <%- include('map') -%>
+  <script src="worldmap.js"></script>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js">
 
-</script>
+  </script>
 
 
 
@@ -26,8 +26,8 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg  bg-dark navbar-light"
-    style="background-color:rgba(52, 73, 94,0.5);padding:10px;margin-bottom:30px;">
+  <nav class="navbar navbar-expand-lg   navbar-light"
+    style="background-color: #e3f2fd;padding:10px;margin-bottom:30px;">
     <a class="navbar-brand commonlink" style="font-size:40px;font-weight:50px;font-family: 'Noto Serif', serif;"
       href="#">CLive<span><img src="images/i.png" style="height:60px;"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -47,27 +47,88 @@
       </ul>
       <form class="form-inline my-2 my-lg-0" action="/individual" method="post">
         <input class="form-control mr-sm-2" id="search" name="search" type="search" autocomplete="on"
-          placeholder="Search for country" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          placeholder="Search for country" aria-label="Search" style="border: 1px solid white;border-radius: 20px;">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="border-radius: 10px;">Search</button>
       </form>
     </div>
   </nav>
 
+  <div class="row col-lg-12" style="background-color: rgba(72, 219, 251,0.5);padding-bottom: 50px;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 typewriter blink-caret">
+      <h1
+        style="text-align: center;font-family: 'Noto Serif', serif;letter-spacing: 3px;font-size:75px;color:#2c3e50;font-weight: 25px;padding:20px 30px 30px 0px">
+        STAY <img src="images/home2.png" alt="network error"> <br>
+        STAY SAFE </h1>
+      <div class="typewriter blink-caret">
+        <h1
+          style="text-align: center; font-family: 'Noto Serif', serif;letter-spacing:2px;font-size:50px;color:#2c3e50;font-weight: 20px;">
+          A Quick Start...</h1>
+      </div>
+    </div>
+    <!-- <div class="col-lg-4">
+    <img id="cimg" src="https://cdn.mos.cms.futurecdn.net/JtVH5Khvihib7dBDFY9ZDR.jpg" alt="network error">
+  </div> -->
+    <div class="col-lg-3"></div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color: rgba(72, 219, 251,0.5);">
 
-<h1>HTML5/Javascript World Map</h1>
-    <div id="map"></div>
-    <style type="text/css">
-.legend{color: black; width: 100%; font-family: arial; font-size: 14px;}
-.legend_color {display: table; width: 100%; background: white; list-style: none; margin: 0px; padding: 0px; }
-.legend_color li{width: 20%;  height: 20px; display: table-cell;}
-.legend_label {display: table; width: 100%;  padding: 0px; padding-left: 10%; padding-right: 10%; list-style: none; margin: 0px; box-sizing: border-box;}
-.legend_label li{width: 25%;  height: 20px; display: table-cell; text-align: center;}
-</style>
-<div class="legend">
-  <ul class="legend_label">
-    <li>19,704</li><li>19,704</li><li>19,704</li><li>19,704</li>
-  </ul>
-  <ul class="legend_color">
-    <li style="background-color: #ff6666"></li><li style="background-color: #ff3333"></li><li style="background-color: #ff0000"></li><li style="background-color: #cc0000"></li><li style="background-color: #990000"></li>
-  </ul>
-</div>
+    <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="map"></div>
+  </div>
+
+  <style type="text/css">
+    .legend {
+      color: black;
+      width: 100%;
+      font-family: arial;
+      font-size: 14px;
+    }
+
+    .legend_color {
+      display: table;
+      width: 100%;
+      background: white;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .legend_color li {
+      width: 20%;
+      height: 20px;
+      display: table-cell;
+    }
+
+    .legend_label {
+      display: table;
+      width: 100%;
+      padding: 0px;
+      padding-left: 10%;
+      padding-right: 10%;
+      list-style: none;
+      margin: 0px;
+      box-sizing: border-box;
+    }
+
+    .legend_label li {
+      width: 25%;
+      height: 20px;
+      display: table-cell;
+      text-align: center;
+    }
+  </style>
+  <div class="legend">
+    <ul class="legend_label">
+      <li>19,704</li>
+      <li>19,704</li>
+      <li>19,704</li>
+      <li>19,704</li>
+    </ul>
+    <ul class="legend_color">
+      <li style="background-color: #ff6666"></li>
+      <li style="background-color: #ff3333"></li>
+      <li style="background-color: #ff0000"></li>
+      <li style="background-color: #cc0000"></li>
+      <li style="background-color: #990000"></li>
+    </ul>
+  </div>
