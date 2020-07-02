@@ -58,7 +58,7 @@ mongoose.connect("mongodb://localhost:27017/coronausersDB", {
 
 app.get("/", function (req, res) {
 	api.countries({sort:'cases'}).then((c)=>{
-    console.log(c);
+    
     var countr={}
 
       c.forEach((i)=>{
@@ -104,7 +104,6 @@ app.get("/", function (req, res) {
     yesterday = new Date(t.setDate(t.getDate() - 14));
     var nrecovered = Total.Global.NewRecovered;
     var ndeaths = Total.Global.NewDeaths;
-    console.log(countr);
     res.render("main", {
       TConfirmed: confirmed,
       TRecovered: recovered,
@@ -143,7 +142,7 @@ app.post("/individual", function (req, res) {
     active_million = element.activePerOneMillion;
     test_million = element.testsPerOneMillion;
     total_deaths = element.deaths;
-    console.log(1);
+    
     today = new Date().toISOString().substring(0, 10);
     t = new Date();
     yesterday = new Date(t.setDate(t.getDate() - 45));
@@ -156,7 +155,7 @@ app.post("/individual", function (req, res) {
       method: 'GET',
       json: true
     }, function (err, response) {
-      console.log("20");
+     
       Tot = [];
       Confirm = [];
       D = [];
@@ -165,14 +164,14 @@ app.post("/individual", function (req, res) {
 
 
       Tot = response.body;
-      console.log(2);
+     
       Tot.forEach(function (item) {
         D.push(item.Date);
 
         Confirm.push(item.Confirmed);
         De.push(item.Deaths);
         Ac.push(item.Active);
-        console.log(3);
+       
 
       });
 
@@ -182,12 +181,11 @@ app.post("/individual", function (req, res) {
         method: 'GET',
         json: true
       }, function (err, resp) {
-        console.log("30");
+       
         province = resp.body;
         state_province = province.State;
-        // console.log(state_province);
-
-  console.log(state_province);
+       
+  
 
 
 
@@ -218,11 +216,12 @@ app.post("/individual", function (req, res) {
 });
 
 
+//requests
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-
-
-
-app.listen(3000, function () {
-  console.log("its working");
-
+app.listen(port, function() {
+  console.log("Server started on port 3000");
 });

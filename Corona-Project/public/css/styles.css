@@ -60,7 +60,6 @@ body {
 }
 
 footer {
-  margin-top: 40px;
   text-align: center;
 }
 
@@ -320,4 +319,17 @@ table,
 th,
 td {
   border: 3px solid #2c3e50;
+}
+
+.session {
+  border-radius: 25px;
+  margin-left: 80px;
+  margin-top: 20px;
+  transition-property: transform;
+  transition: 1s;
+  transition-timing-function: linear;
+}
+
+.session:hover {
+  transform: rotateY(180deg);
 }
