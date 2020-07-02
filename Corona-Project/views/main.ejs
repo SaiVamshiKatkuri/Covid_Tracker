@@ -82,10 +82,18 @@
   </div>
 
 <div style="text-align: center;margin-top: 100px;">
-  <a href="#top" class="btn btn-outline-info" style="text-decoration: none;text-align: center;width:70px;height:70px;font-size: 45px;padding: 2px;border-radius: 100%;scroll-behavior: smooth;"><i class="fas fa-arrow-up"></i></a>
+
+  <button id="scroll" class="btn btn-outline-info" style="text-decoration: none;text-align: center;width:70px;height:70px;font-size: 45px;padding: 2px;border-radius: 100%;"><i class="fas fa-arrow-up"></i></button>
 
 </div>
- 
+
+ <script>
+  $("#scroll").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#top").offset().top},
+        'slow');
+});
+</script>
 
 
 
