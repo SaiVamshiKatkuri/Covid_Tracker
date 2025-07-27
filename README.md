@@ -1,6 +1,5 @@
 # CLIVE
-## Check my site
-http://clive-world.herokuapp.com/
+
 1. CLIVE is a project to display information about the pandemic covid-19.
 2. This Project is entirely based on JSON data from different API's that are processed to show the necesssary content.
 3. To analyze the rate of increase in cases the graphs are plotted for different countries and the world.
